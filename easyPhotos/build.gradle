@@ -1,0 +1,40 @@
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+}
+
+android {
+    compileSdkVersion 33
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 33
+        versionCode 1
+        versionName "1.0"
+        vectorDrawables.useSupportLibrary = true
+    }
+}
+
+dependencies {
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.1.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'com.davemorrissey.labs:subsampling-scale-image-view-androidx:3.10.0'
+    implementation 'com.github.chrisbanes:PhotoView:2.3.0'
+}
+
+afterEvaluate{
+    publishing{
+        publications{
+            release(MavenPublication){
+                from components.release
+
+                groupId = 'com.huantansheng.easyphotos'
+                artifactId = 'easyphotos'
+                version = '1.0.0'
+            }
+        }
+    }
+}
