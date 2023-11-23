@@ -21,6 +21,7 @@ import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AccelerateInterpolator;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.huantansheng.easyphotos.R;
@@ -34,6 +35,7 @@ import com.huantansheng.easyphotos.ui.adapter.PuzzleSelectorPreviewAdapter;
 import com.huantansheng.easyphotos.ui.widget.PressedTextView;
 import com.huantansheng.easyphotos.utils.Color.ColorUtils;
 import com.huantansheng.easyphotos.utils.system.SystemUtils;
+import com.huantansheng.easyphotos.LocalizationConst;
 
 import java.util.ArrayList;
 
@@ -93,6 +95,8 @@ public class PuzzleSelectorActivity extends AppCompatActivity implements View.On
         tvDone = (PressedTextView) findViewById(R.id.tv_done);
         tvDone.setOnClickListener(this);
         tvAlbumItems.setOnClickListener(this);
+        TextView tvMessage = (TextView) findViewById(R.id.tv_message);
+        tvMessage.setText(LocalizationConst.select_puzzle_photos);
         initAlbumItems();
         initPhotos();
         initPreview();
@@ -226,7 +230,7 @@ public class PuzzleSelectorActivity extends AppCompatActivity implements View.On
     @Override
     public void onPhotoClick(int position) {
         if (selectedPhotos.size() > 8) {
-            Toast.makeText(getApplicationContext(), getString(R.string.selector_reach_max_image_hint_easy_photos, 9), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), String.format(LocalizationConst.selector_reach_max_image_hint_easy_photos, 9), Toast.LENGTH_SHORT).show();
             return;
         }
 

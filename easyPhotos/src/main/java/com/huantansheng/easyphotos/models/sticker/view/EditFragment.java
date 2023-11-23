@@ -20,6 +20,7 @@ import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import com.huantansheng.easyphotos.LocalizationConst;
 import com.huantansheng.easyphotos.R;
 
 /**
@@ -55,6 +56,8 @@ public class EditFragment extends DialogFragment implements View.OnClickListener
         tvSample = (TextView) rootView.findViewById(R.id.tv_sample);
         et = (EditText) rootView.findViewById(R.id.et);
         seekBar = (SeekBar) rootView.findViewById(R.id.m_seek_bar);
+        TextView tvDone = (TextView) rootView.findViewById(R.id.tv_done);
+        tvDone.setText(LocalizationConst.done_easy_photos);
 
         l(rootView, R.id.iv_red, R.id.iv_orange, R.id.iv_yellow, R.id.iv_green, R.id.iv_cyan, R.id.iv_blue, R.id.iv_purple, R.id.iv_black, R.id.iv_gray, R.id.iv_white, R.id.tv_done, R.id.iv_clear);
 

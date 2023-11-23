@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.huantansheng.easyphotos.LocalizationConst;
 import com.huantansheng.easyphotos.R;
 import com.huantansheng.easyphotos.constant.Type;
 import com.huantansheng.easyphotos.result.Result;
@@ -48,7 +49,7 @@ public class PreviewPhotosFragmentAdapter extends RecyclerView.Adapter<PreviewPh
         final boolean isGif = path.endsWith(Type.GIF) || type.endsWith(Type.GIF);
         if (Setting.showGif && isGif) {
             Setting.imageEngine.loadGifAsBitmap(holder.ivPhoto.getContext(), uri, holder.ivPhoto);
-            holder.tvType.setText(R.string.gif_easy_photos);
+            holder.tvType.setText(LocalizationConst.gif_easy_photos);
             holder.tvType.setVisibility(View.VISIBLE);
         } else if (Setting.showVideo && type.contains(Type.VIDEO)) {
             Setting.imageEngine.loadPhoto(holder.ivPhoto.getContext(), uri, holder.ivPhoto);
@@ -95,6 +96,7 @@ public class PreviewPhotosFragmentAdapter extends RecyclerView.Adapter<PreviewPh
             ivPhoto = (PressedImageView) itemView.findViewById(R.id.iv_photo);
             frame = itemView.findViewById(R.id.v_selector);
             tvType = (TextView) itemView.findViewById(R.id.tv_type);
+            tvType.setText(LocalizationConst.gif_easy_photos);
         }
     }
 

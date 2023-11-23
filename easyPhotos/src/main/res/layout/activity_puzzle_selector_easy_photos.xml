@@ -46,8 +46,7 @@
             android:padding="8dp"
             android:textSize="12sp"
             android:textColor="@color/easy_photos_fg_primary"
-            android:layout_alignParentTop="true"
-            android:text="@string/select_puzzle_photos" />
+            android:layout_alignParentTop="true" />
 
         <com.huantansheng.easyphotos.ui.widget.PressedTextView
             android:id="@+id/tv_done"

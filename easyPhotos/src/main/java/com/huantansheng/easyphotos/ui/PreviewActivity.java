@@ -26,6 +26,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.huantansheng.easyphotos.LocalizationConst;
 import com.huantansheng.easyphotos.R;
 import com.huantansheng.easyphotos.constant.Code;
 import com.huantansheng.easyphotos.constant.Key;
@@ -224,6 +225,10 @@ public class PreviewActivity extends AppCompatActivity implements PreviewPhotosA
     }
 
     private void initView() {
+        TextView tvSelector = findViewById(R.id.tv_selector);
+        tvSelector.setText(LocalizationConst.selector_easy_photos);
+        PressedTextView tvEdit = findViewById(R.id.tv_edit);
+        tvEdit.setText(LocalizationConst.edit_easy_photos);
         setClick(R.id.iv_back, R.id.tv_edit, R.id.tv_selector);
 
         mToolBar = (FrameLayout) findViewById(R.id.m_top_bar_layout);
@@ -240,6 +245,7 @@ public class PreviewActivity extends AppCompatActivity implements PreviewPhotosA
         tvNumber = (TextView) findViewById(R.id.tv_number);
         tvDone = (PressedTextView) findViewById(R.id.tv_done);
         tvOriginal = (TextView) findViewById(R.id.tv_original);
+        tvOriginal.setText(LocalizationConst.original_easy_photos);
         flFragment = (FrameLayout) findViewById(R.id.fl_fragment);
         previewFragment =
                 (PreviewFragment) getSupportFragmentManager().findFragmentById(R.id.fragment_preview);
@@ -280,13 +286,11 @@ public class PreviewActivity extends AppCompatActivity implements PreviewPhotosA
                 }
                 lastPosition = position;
                 previewFragment.setSelectedPosition(-1);
-                tvNumber.setText(getString(R.string.preview_current_number_easy_photos,
-                        lastPosition + 1, photos.size()));
+                tvNumber.setText(String.format(LocalizationConst.preview_current_number_easy_photos, lastPosition + 1, photos.size()));
                 toggleSelector();
             }
         });
-        tvNumber.setText(getString(R.string.preview_current_number_easy_photos, index + 1,
-                photos.size()));
+        tvNumber.setText(String.format(LocalizationConst.preview_current_number_easy_photos, index + 1, photos.size()));
     }
 
     private boolean clickDone = false;
@@ -372,15 +376,12 @@ public class PreviewActivity extends AppCompatActivity implements PreviewPhotosA
                 return;
             }
             if (Setting.isOnlyVideo()) {
-                Toast.makeText(getApplicationContext(), getString(R.string.selector_reach_max_video_hint_easy_photos
-                        , Setting.count), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), String.format(LocalizationConst.selector_reach_max_video_hint_easy_photos, Setting.count), Toast.LENGTH_SHORT).show();
 
             } else if (Setting.showVideo) {
-                Toast.makeText(getApplicationContext(), getString(R.string.selector_reach_max_hint_easy_photos,
-                        Setting.count), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), LocalizationConst.selector_reach_max_hint_easy_photos, Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(getApplicationContext(), getString(R.string.selector_reach_max_image_hint_easy_photos,
-                        Setting.count), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), String.format(LocalizationConst.selector_reach_max_image_hint_easy_photos, Setting.count), Toast.LENGTH_SHORT).show();
             }
             return;
         }
@@ -392,16 +393,15 @@ public class PreviewActivity extends AppCompatActivity implements PreviewPhotosA
                 switch (res) {
                     case Result.PICTURE_OUT:
                         Toast.makeText(getApplicationContext(),
-                                getString(R.string.selector_reach_max_image_hint_easy_photos,
-                                        Setting.complexPictureCount), Toast.LENGTH_SHORT).show();
+                                String.format(LocalizationConst.selector_reach_max_image_hint_easy_photos, Setting.complexPictureCount),
+                                Toast.LENGTH_SHORT).show();
                         break;
                     case Result.VIDEO_OUT:
                         Toast.makeText(getApplicationContext(),
-                                getString(R.string.selector_reach_max_video_hint_easy_photos,
-                                        Setting.complexVideoCount), Toast.LENGTH_SHORT).show();
+                                String.format(LocalizationConst.selector_reach_max_video_hint_easy_photos, Setting.complexVideoCount), Toast.LENGTH_SHORT).show();
                         break;
                     case Result.SINGLE_TYPE:
-                        Toast.makeText(getApplicationContext(), getString(R.string.selector_single_type_hint_easy_photos), Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), LocalizationConst.selector_single_type_hint_easy_photos, Toast.LENGTH_SHORT).show();
                         break;
                 }
                 return;
@@ -458,7 +458,7 @@ public class PreviewActivity extends AppCompatActivity implements PreviewPhotosA
             if (Setting.complexSelector) {
                 if (Setting.complexSingleType) {
                     if (Result.getPhotoType(0).contains(Type.VIDEO)) {
-                        tvDone.setText(getString(R.string.selector_action_done_easy_photos, Result.count(),
+                        tvDone.setText(String.format(LocalizationConst.selector_action_done_easy_photos, Result.count(),
                                 Setting.complexVideoCount));
                         return;
                     }
@@ -480,8 +480,7 @@ public class PreviewActivity extends AppCompatActivity implements PreviewPhotosA
             if (TextUtils.equals(path, photos.get(i).path)) {
                 rvPhotos.scrollToPosition(i);
                 lastPosition = i;
-                tvNumber.setText(getString(R.string.preview_current_number_easy_photos,
-                        lastPosition + 1, photos.size()));
+                tvNumber.setText(String.format(LocalizationConst.preview_current_number_easy_photos, lastPosition + 1, photos.size()));
                 previewFragment.setSelectedPosition(position);
                 toggleSelector();
                 return;

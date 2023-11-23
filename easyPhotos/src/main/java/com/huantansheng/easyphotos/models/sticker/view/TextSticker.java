@@ -23,6 +23,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 import com.huantansheng.easyphotos.EasyPhotos;
+import com.huantansheng.easyphotos.LocalizationConst;
 import com.huantansheng.easyphotos.R;
 import com.huantansheng.easyphotos.models.sticker.listener.OnStickerClickListener;
 
@@ -75,7 +76,7 @@ public class TextSticker extends View {
 
         this.text = text;
         if (TextUtils.isEmpty(this.text)) {
-            this.text = context.getString(R.string.text_sticker_hint_easy_photos);
+            this.text = LocalizationConst.text_sticker_hint_easy_photos;
         }
         path = new Path();
         textLayoutWidth = getResources().getDisplayMetrics().widthPixels / 2;

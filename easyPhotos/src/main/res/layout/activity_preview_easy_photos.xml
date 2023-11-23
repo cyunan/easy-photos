@@ -119,7 +119,6 @@
                 android:gravity="center"
                 android:paddingLeft="16dp"
                 android:paddingRight="16dp"
-                android:text="@string/edit_easy_photos"
                 android:textColor="@color/easy_photos_fg_primary"
                 android:textStyle="bold"
                 android:visibility="gone" />
@@ -131,7 +130,6 @@
                 android:layout_below="@+id/fl_fragment"
                 android:layout_centerInParent="true"
                 android:gravity="center"
-                android:text="@string/original_easy_photos"
                 android:textColor="@color/easy_photos_fg_primary"
                 android:textStyle="bold" />
 
@@ -144,7 +142,6 @@
                 android:layout_toStartOf="@+id/iv_selector"
                 android:layout_toLeftOf="@+id/iv_selector"
                 android:gravity="center"
-                android:text="@string/selector_easy_photos"
                 android:textColor="@color/easy_photos_fg_primary"
                 android:textStyle="bold" />
 

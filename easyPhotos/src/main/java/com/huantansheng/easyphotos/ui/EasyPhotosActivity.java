@@ -45,6 +45,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.SimpleItemAnimator;
 
 import com.huantansheng.easyphotos.EasyPhotos;
+import com.huantansheng.easyphotos.LocalizationConst;
 import com.huantansheng.easyphotos.R;
 import com.huantansheng.easyphotos.constant.Code;
 import com.huantansheng.easyphotos.constant.Key;
@@ -180,8 +181,9 @@ public class EasyPhotosActivity extends AppCompatActivity implements AlbumItemsA
         tvPermission = findViewById(R.id.tv_permission);
         rootViewAlbumItems = findViewById(R.id.root_view_album_items);
         tvTitle = findViewById(R.id.tv_title);
+        tvTitle.setText(LocalizationConst.picture_selection_easy_photos);
         if (Setting.isOnlyVideo()) {
-            tvTitle.setText(R.string.video_selection_easy_photos);
+            tvTitle.setText(LocalizationConst.video_selection_easy_photos);
         }
         findViewById(R.id.iv_second_menu).setVisibility(Setting.showPuzzleMenu || Setting.showCleanMenu || Setting.showOriginalMenu ? View.VISIBLE : View.GONE);
         setClick(R.id.iv_back);
@@ -248,7 +250,7 @@ public class EasyPhotosActivity extends AppCompatActivity implements AlbumItemsA
 
                     @Override
                     public void onShouldShow() {
-                        tvPermission.setText(R.string.permissions_again_easy_photos);
+                        tvPermission.setText(LocalizationConst.permissions_again_easy_photos);
                         permissionView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
@@ -262,7 +264,7 @@ public class EasyPhotosActivity extends AppCompatActivity implements AlbumItemsA
 
                     @Override
                     public void onFailed() {
-                        tvPermission.setText(R.string.permissions_die_easy_photos);
+                        tvPermission.setText(LocalizationConst.permissions_die_easy_photos);
                         permissionView.setOnClickListener(new View.OnClickListener() {
                             @Override
                             public void onClick(View view) {
@@ -286,7 +288,7 @@ public class EasyPhotosActivity extends AppCompatActivity implements AlbumItemsA
             throw new RuntimeException("AlbumBuilder" + " : 请执行 setFileProviderAuthority()方法");
         if (!cameraIsCanUse()) {
             permissionView.setVisibility(View.VISIBLE);
-            tvPermission.setText(R.string.permissions_die_easy_photos);
+            tvPermission.setText(LocalizationConst.permissions_die_easy_photos);
             permissionView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -332,11 +334,11 @@ public class EasyPhotosActivity extends AppCompatActivity implements AlbumItemsA
                 cameraIntent.putExtra(MediaStore.EXTRA_OUTPUT, imageUri);//将拍取的照片保存到指定URI
                 startActivityForResult(cameraIntent, requestCode);
             } else {
-                Toast.makeText(getApplicationContext(), R.string.camera_temp_file_error_easy_photos,
+                Toast.makeText(getApplicationContext(), LocalizationConst.camera_temp_file_error_easy_photos,
                         Toast.LENGTH_SHORT).show();
             }
         } else {
-            Toast.makeText(getApplicationContext(), R.string.msg_no_camera_easy_photos, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), LocalizationConst.msg_no_camera_easy_photos, Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -685,11 +687,11 @@ public class EasyPhotosActivity extends AppCompatActivity implements AlbumItemsA
 
         if (albumModel.getAlbumItems().isEmpty()) {
             if (Setting.isOnlyVideo()) {
-                Toast.makeText(getApplicationContext(), R.string.no_videos_easy_photos, Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), LocalizationConst.no_videos_easy_photos, Toast.LENGTH_LONG).show();
                 finish();
                 return;
             }
-            Toast.makeText(getApplicationContext(), R.string.no_photos_easy_photos, Toast.LENGTH_LONG).show();
+            Toast.makeText(getApplicationContext(), LocalizationConst.no_photos_easy_photos, Toast.LENGTH_LONG).show();
             if (Setting.isShowCamera) launchCamera(Code.REQUEST_CAMERA);
             else finish();
             return;
@@ -742,17 +744,23 @@ public class EasyPhotosActivity extends AppCompatActivity implements AlbumItemsA
         rvPhotos.setLayoutManager(gridLayoutManager);
         rvPhotos.setAdapter(photosAdapter);
         tvOriginal = findViewById(R.id.tv_original);
+        tvOriginal.setText(LocalizationConst.original_easy_photos);
         if (Setting.showOriginalMenu) {
             processOriginalMenu();
         } else {
             tvOriginal.setVisibility(View.GONE);
         }
         tvPreview = findViewById(R.id.tv_preview);
+        tvPreview.setText(LocalizationConst.selector_preview_easy_photos);
 
         initAlbumItems();
         shouldShowMenuDone();
         setClick(R.id.iv_album_items, R.id.tv_clear, R.id.iv_second_menu, R.id.tv_puzzle);
         setClick(tvAlbumItems, rootViewAlbumItems, tvDone, tvOriginal, tvPreview, ivCamera);
+        TextView tvClear = findViewById(R.id.tv_clear);
+        tvClear.setText(LocalizationConst.empty_easy_photos);
+        TextView tvPuzzle = findViewById(R.id.tv_puzzle);
+        tvPuzzle.setText(LocalizationConst.puzzle_easy_photos);
 
     }
 
@@ -1002,18 +1010,18 @@ public class EasyPhotosActivity extends AppCompatActivity implements AlbumItemsA
         if (Setting.complexSelector) {
             if (Setting.complexSingleType) {
                 if (Result.getPhotoType(0).contains(Type.VIDEO)) {
-                    tvDone.setText(getString(R.string.selector_action_done_easy_photos, Result.count(),
+                    tvDone.setText(String.format(LocalizationConst.selector_action_done_easy_photos, Result.count(),
                             Setting.complexVideoCount));
                     return;
                 }
-                tvDone.setText(getString(R.string.selector_action_done_easy_photos, Result.count(),
-                        Setting.complexPictureCount));
+                tvDone.setText(String.format(LocalizationConst.selector_action_done_easy_photos, Result.count(),
+                        Setting.complexVideoCount));
                 return;
             }
         }
 
-        tvDone.setText(getString(R.string.selector_action_done_easy_photos, Result.count(),
-                Setting.count));
+        tvDone.setText(String.format(LocalizationConst.selector_action_done_easy_photos, Result.count(),
+                Setting.complexVideoCount));
 
     }
 
@@ -1031,28 +1039,26 @@ public class EasyPhotosActivity extends AppCompatActivity implements AlbumItemsA
     public void onSelectorOutOfMax(@Nullable Integer result) {
         if (result == null) {
             if (Setting.isOnlyVideo()) {
-                Toast.makeText(getApplicationContext(), getString(R.string.selector_reach_max_video_hint_easy_photos
-                        , Setting.count), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), String.format(LocalizationConst.selector_reach_max_video_hint_easy_photos, Setting.count), Toast.LENGTH_SHORT).show();
 
             } else if (Setting.showVideo) {
-                Toast.makeText(getApplicationContext(), getString(R.string.selector_reach_max_hint_easy_photos), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), LocalizationConst.selector_reach_max_hint_easy_photos, Toast.LENGTH_SHORT).show();
             } else {
-                Toast.makeText(getApplicationContext(), getString(R.string.selector_reach_max_image_hint_easy_photos,
-                        Setting.count), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), String.format(LocalizationConst.selector_reach_max_image_hint_easy_photos, Setting.count),
+                        Toast.LENGTH_SHORT).show();
             }
             return;
         }
         switch (result) {
             case Result.PICTURE_OUT:
-                Toast.makeText(getApplicationContext(), getString(R.string.selector_reach_max_image_hint_easy_photos
-                        , Setting.complexPictureCount), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), String.format(LocalizationConst.selector_reach_max_image_hint_easy_photos, Setting.complexPictureCount),
+                        Toast.LENGTH_SHORT).show();
                 break;
             case Result.VIDEO_OUT:
-                Toast.makeText(getApplicationContext(), getString(R.string.selector_reach_max_video_hint_easy_photos
-                        , Setting.complexVideoCount), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), String.format(LocalizationConst.selector_reach_max_video_hint_easy_photos, Setting.complexVideoCount), Toast.LENGTH_SHORT).show();
                 break;
             case Result.SINGLE_TYPE:
-                Toast.makeText(getApplicationContext(), getString(R.string.selector_single_type_hint_easy_photos),
+                Toast.makeText(getApplicationContext(), LocalizationConst.selector_single_type_hint_easy_photos,
                         Toast.LENGTH_SHORT).show();
                 break;
 

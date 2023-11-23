@@ -88,7 +88,6 @@
                 android:gravity="center"
                 android:minWidth="80dp"
                 android:padding="8dp"
-                android:text="@string/original_easy_photos"
                 android:textColor="@color/easy_photos_fg_primary" />
 
             <TextView
@@ -103,7 +102,6 @@
                 android:gravity="center"
                 android:minWidth="80dp"
                 android:padding="8dp"
-                android:text="@string/puzzle_easy_photos"
                 android:textColor="@color/easy_photos_fg_primary" />
 
             <TextView
@@ -116,7 +114,6 @@
                 android:gravity="center"
                 android:minWidth="80dp"
                 android:padding="8dp"
-                android:text="@string/empty_easy_photos"
                 android:textColor="@color/easy_photos_fg_primary" />
         </LinearLayout>
 
@@ -139,7 +136,6 @@
             android:paddingLeft="16dp"
             android:paddingEnd="6dp"
             android:paddingRight="6dp"
-            android:text="@string/selector_folder_all_easy_photos"
             android:textColor="@color/easy_photos_fg_primary"
             app:layout_constraintBottom_toBottomOf="@+id/m_bottom_bar"
             app:layout_constraintLeft_toLeftOf="@+id/m_bottom_bar"
@@ -177,7 +173,6 @@
             android:paddingLeft="16dp"
             android:paddingEnd="16dp"
             android:paddingRight="16dp"
-            android:text="@string/selector_preview_easy_photos"
             android:textColor="@color/easy_photos_fg_primary"
             android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="@+id/m_bottom_bar"
@@ -219,7 +214,6 @@
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
             android:gravity="center"
-            android:text="@string/picture_selection_easy_photos"
             android:textColor="@color/easy_photos_fg_primary"
             android:visibility="visible"
             app:layout_constraintBottom_toBottomOf="@+id/m_tool_bar"

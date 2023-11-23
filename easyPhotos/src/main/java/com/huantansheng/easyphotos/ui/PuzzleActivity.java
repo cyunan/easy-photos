@@ -28,6 +28,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.huantansheng.easyphotos.EasyPhotos;
+import com.huantansheng.easyphotos.LocalizationConst;
 import com.huantansheng.easyphotos.R;
 import com.huantansheng.easyphotos.constant.Code;
 import com.huantansheng.easyphotos.constant.Key;
@@ -195,13 +196,19 @@ public class PuzzleActivity extends AppCompatActivity implements View.OnClickLis
         initRecyclerView();
         progressBar = findViewById(R.id.progress);
         setClick(R.id.tv_back, R.id.tv_done);
+        TextView tvDone = findViewById(R.id.tv_done);
+        tvDone.setText(LocalizationConst.done_easy_photos);
+        TextView tvBack = findViewById(R.id.tv_back);
+        tvBack.setText(LocalizationConst.cancel_easy_photos);
     }
 
     private void initIvMenu() {
         fab = (FloatingActionButton) findViewById(R.id.fab);
 
         tvTemplate = (TextView) findViewById(R.id.tv_template);
+        tvTemplate.setText(LocalizationConst.template_easy_photos);
         tvTextSticker = (TextView) findViewById(R.id.tv_text_sticker);
+        tvTextSticker.setText(LocalizationConst.text_sticker_easy_photos);
         mRootView = (RelativeLayout) findViewById(R.id.m_root_view);
         mBottomLayout = (RelativeLayout) findViewById(R.id.m_bottom_layout);
 
@@ -600,7 +607,7 @@ public class PuzzleActivity extends AppCompatActivity implements View.OnClickLis
 
                     @Override
                     public void onShouldShow() {
-                        Snackbar.make(rvPuzzleTemplet, R.string.permissions_again_easy_photos,
+                        Snackbar.make(rvPuzzleTemplet, LocalizationConst.permissions_again_easy_photos,
                                 Snackbar.LENGTH_INDEFINITE).setAction("go",
                                 new View.OnClickListener() {
                                     @Override
@@ -614,7 +621,7 @@ public class PuzzleActivity extends AppCompatActivity implements View.OnClickLis
 
                     @Override
                     public void onFailed() {
-                        Snackbar.make(rvPuzzleTemplet, R.string.permissions_die_easy_photos,
+                        Snackbar.make(rvPuzzleTemplet, LocalizationConst.permissions_die_easy_photos,
                                 Snackbar.LENGTH_INDEFINITE).setAction("go",
                                 new View.OnClickListener() {
                                     @Override

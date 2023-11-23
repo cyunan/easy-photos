@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.huantansheng.easyphotos.LocalizationConst;
 import com.huantansheng.easyphotos.R;
 import com.huantansheng.easyphotos.models.sticker.StickerModel;
 import com.huantansheng.easyphotos.models.sticker.entity.TextStickerData;
@@ -26,9 +27,9 @@ public class TextStickerAdapter extends RecyclerView.Adapter<TextStickerAdapter.
         super();
         this.onItemClickListener = listener;
         this.datas = new ArrayList<>();
-        TextStickerData data = new TextStickerData(cxt.getString(R.string.text_sticker_hint_name_easy_photos), cxt.getString(R.string.text_sticker_hint_easy_photos));
+        TextStickerData data = new TextStickerData(LocalizationConst.text_sticker_hint_name_easy_photos, LocalizationConst.text_sticker_hint_easy_photos);
         this.datas.add(0, data);
-        TextStickerData d = new TextStickerData(cxt.getString(R.string.text_sticker_date_easy_photos), "-1");
+        TextStickerData d = new TextStickerData(LocalizationConst.text_sticker_date_easy_photos, "-1");
         datas.add(d);
         datas.addAll(StickerModel.textDataList);
     }

@@ -14,6 +14,7 @@ import android.util.Log;
 
 import androidx.core.content.PermissionChecker;
 
+import com.huantansheng.easyphotos.LocalizationConst;
 import com.huantansheng.easyphotos.R;
 import com.huantansheng.easyphotos.constant.Type;
 import com.huantansheng.easyphotos.models.album.entity.Album;
@@ -162,8 +163,7 @@ public class AlbumModel {
 //            Log.d(TAG, "call: " + "Empty photos");
         } else if (cursor.moveToFirst()) {
             String albumItem_all_name = getAllAlbumName(context);
-            String albumItem_video_name =
-                    context.getString(R.string.selector_folder_video_easy_photos);
+            String albumItem_video_name = LocalizationConst.selector_folder_video_easy_photos;
 
             int albumNameCol = cursor.getColumnIndex(MediaStore.MediaColumns.BUCKET_DISPLAY_NAME);
             int durationCol = cursor.getColumnIndex(MediaStore.MediaColumns.DURATION);
@@ -320,13 +320,12 @@ public class AlbumModel {
      * @return 专辑名
      */
     public String getAllAlbumName(Context context) {
-        String albumItem_all_name =
-                context.getString(R.string.selector_folder_all_video_photo_easy_photos);
+        String albumItem_all_name = LocalizationConst.selector_folder_all_video_photo_easy_photos;
         if (Setting.isOnlyVideo()) {
-            albumItem_all_name = context.getString(R.string.selector_folder_video_easy_photos);
+            albumItem_all_name = LocalizationConst.selector_folder_video_easy_photos;
         } else if (!Setting.showVideo) {
             //不显示视频
-            albumItem_all_name = context.getString(R.string.selector_folder_all_easy_photos);
+            albumItem_all_name = LocalizationConst.selector_folder_all_easy_photos;
         }
         return albumItem_all_name;
     }
