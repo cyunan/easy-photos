@@ -462,12 +462,12 @@ public class PreviewActivity extends AppCompatActivity implements PreviewPhotosA
                                 Setting.complexVideoCount));
                         return;
                     }
-                    tvDone.setText(getString(R.string.selector_action_done_easy_photos, Result.count(),
+                    tvDone.setText(String.format(LocalizationConst.selector_action_done_easy_photos, Result.count(),
                             Setting.complexPictureCount));
                     return;
                 }
             }
-            tvDone.setText(getString(R.string.selector_action_done_easy_photos, Result.count(),
+            tvDone.setText(String.format(LocalizationConst.selector_action_done_easy_photos, Result.count(),
                     Setting.count));
         }
     }

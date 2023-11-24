@@ -7,6 +7,7 @@
 package com.huantansheng.easyphotos;
 
 public class LocalizationConst {
+    public static String app_name = "EasyPhotos";
     public static String camera_temp_file_error_easy_photos = "图片错误";
     public static String cancel_easy_photos = "取消";
     public static String done_easy_photos = "完成";

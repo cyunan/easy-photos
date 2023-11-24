@@ -28,6 +28,7 @@ import androidx.recyclerview.widget.SnapHelper;
 
 import com.google.android.material.navigation.NavigationView;
 import com.huantansheng.easyphotos.EasyPhotos;
+import com.huantansheng.easyphotos.LocalizationConst;
 import com.huantansheng.easyphotos.callback.PuzzleCallback;
 import com.huantansheng.easyphotos.callback.SelectCallback;
 import com.huantansheng.easyphotos.constant.Type;

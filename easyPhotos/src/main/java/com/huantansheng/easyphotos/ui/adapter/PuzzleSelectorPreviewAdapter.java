@@ -97,6 +97,7 @@ public class PuzzleSelectorPreviewAdapter extends RecyclerView.Adapter {
             this.ivPhoto = (ImageView) itemView.findViewById(R.id.iv_photo);
             this.ivDelete = (ImageView) itemView.findViewById(R.id.iv_delete);
             this.tvType = (TextView) itemView.findViewById(R.id.tv_type);
+            tvType.setText(LocalizationConst.gif_easy_photos);
         }
     }
 }

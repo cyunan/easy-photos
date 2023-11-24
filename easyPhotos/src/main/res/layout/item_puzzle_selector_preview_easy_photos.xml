@@ -39,7 +39,6 @@
         android:shadowDx="0"
         android:shadowDy="0"
         android:shadowRadius="1.2"
-        android:text="@string/gif_easy_photos"
         android:textColor="@color/easy_photos_fg_primary"
         android:textSize="12sp"
         android:textStyle="bold"

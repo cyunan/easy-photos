@@ -153,7 +153,7 @@ public class PuzzleSelectorActivity extends AppCompatActivity implements View.On
         } else if (R.id.root_view_album_items == id) {
             showAlbumItems(false);
         } else if (R.id.tv_done == id) {
-            PuzzleActivity.startWithPhotos(this, selectedPhotos, Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + getString(R.string.app_name), "IMG", Code.REQUEST_PUZZLE, false, Setting.imageEngine);
+            PuzzleActivity.startWithPhotos(this, selectedPhotos, Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + LocalizationConst.app_name, "IMG", Code.REQUEST_PUZZLE, false, Setting.imageEngine);
 
         }
     }
@@ -238,7 +238,7 @@ public class PuzzleSelectorActivity extends AppCompatActivity implements View.On
         previewAdapter.notifyDataSetChanged();
         rvPreview.smoothScrollToPosition(selectedPhotos.size() - 1);
 
-        tvDone.setText(getString(R.string.selector_action_done_easy_photos, selectedPhotos.size(), 9));
+        tvDone.setText(String.format(LocalizationConst.selector_action_done_easy_photos, selectedPhotos.size(), 9));
         if (selectedPhotos.size() > 1) {
             tvDone.setVisibility(View.VISIBLE);
         }
@@ -248,7 +248,7 @@ public class PuzzleSelectorActivity extends AppCompatActivity implements View.On
     public void onDeleteClick(int position) {
         selectedPhotos.remove(position);
         previewAdapter.notifyDataSetChanged();
-        tvDone.setText(getString(R.string.selector_action_done_easy_photos, selectedPhotos.size(), 9));
+        tvDone.setText(String.format(LocalizationConst.selector_action_done_easy_photos, selectedPhotos.size(), 9));
         if (selectedPhotos.size() < 2) {
             tvDone.setVisibility(View.INVISIBLE);
         }
